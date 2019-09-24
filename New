@@ -1,0 +1,13 @@
+Sub ErrorWrap()
+'
+'ERRORWARP Macro
+'Wraps formula in ActiveCell in IFERROR = 0 formula and loops until ActiveCell along the row is empty
+'
+
+'
+ActiveCell.Select
+    Do Until IsEmpty(ActiveCell)
+    ActiveCell.formula = "=IFERROR(" & Right(ActiveCell.formula, Len(ActiveCell.formula) - 1) & ",0)"
+    ActiveCell.Offset(1, 0).Select
+    Loop
+End Sub
